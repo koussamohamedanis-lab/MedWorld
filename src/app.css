@@ -1,0 +1,434 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amiri&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Tifinagh&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Momo+Signature&display=swap');
+
+html {
+  min-height: fit-content;
+}
+
+html,
+body {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: Inter, sans-serif;
+}
+
+body {
+  background-color: var(--color-bg);
+}
+
+@font-face {
+  font-family: "Minigap";
+  src: url("/minigap.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+:root {
+  /* notification */
+  --notification-height: 30px;
+
+  /* view */
+  --view-max: 1600px;
+
+
+
+  --color-primary: rgb(44, 139, 234);
+  --color-primary-light: rgb(109, 177, 244);
+  --color-primary-dark: rgb(35, 94, 183);
+  --color-primary-darker: #01427e;
+  --color-secondary: var(--color-primary);
+  --color-bg: rgb(243, 243, 243);
+
+  --background-primary: rgb(247, 251, 255);
+  --background-secondary: rgb(232, 240, 248);
+  --background-third: rgb(206, 226, 246);
+  --text-primary: #000000;
+  --text-secondary: #536a90;
+
+  --border-color: #bfe7ff;
+  --border-color-light: #f3f3f3;
+
+  --shadow-color-rgb: 56, 46, 36;
+  --white: #ffffff;
+  --black: #000000;
+
+  --error: #d73235;
+  --error-dark: #c22729;
+
+  --gold: #c99314;
+  --gold-dark: #AA6C39;
+
+
+  --font-brand: "Minigap", serif;
+  --font-primary: var(--font-brand);
+
+  --font-secondary: "Inter", "Amiri", "Noto Sans Tifinagh", sans-serif;
+  --font-third: "JetBrains Mono", monospace;
+
+
+  --container-max: 1400px;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+
+
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s ease-out;
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --transition-duration: 0.3s;
+  --transition-duration-slow: 0.6s;
+  --transition-duration-slower: 0.8s;
+  --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+
+
+  --padding: 0;
+  --color: var(--color-primary-darker);
+
+  --nav-height: 92px;
+}
+
+[data-theme="dark"] {
+  --background-primary: #1a140d;
+  --background-secondary: #292016;
+  --text-primary: #f0e6d8;
+  --text-secondary: #a89988;
+  --border: #45382b;
+  --shadow-color-rgb: 0, 0, 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/*
+html,
+body {
+  overflow-x: hidden;
+} */
+
+/* ========== ajouter le lissage de poluce ========== */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  backface-visibility: hidden;
+}
+
+/* ========== rendre le texte plus lisible au l'utilisateur ========== */
+body {
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  line-height: 1.6;
+}
+
+html.no-scroll {
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color var(--transition-normal),
+    color var(--transition-normal);
+
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(var(--background-primary) 0%,
+      var(--background-primary) 60%,
+      var(--background-third) 100%);
+}
+
+/* ========== si le clientt n'aime pas les animations ========== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.view {
+  max-width: var(--container-max);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+h1 {
+  font-family: var(--font-primary);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+
+h2 {
+  font-family: var(--font-primary);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h3 {
+  font-family: var(--font-primary);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+.text-large {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+}
+
+.text-small {
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+
+select {
+  display: inline-block;
+  position: relative;
+  width: 220px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  padding: 12px 40px 12px 16px;
+  font-size: 16px;
+  border-radius: 16px;
+  border: 1px solid #d1d1d6;
+  background-color: #f2f2f7;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  color: #1c1c1e;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+  border-color: #0a84ff;
+  box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.2);
+  background-color: #ffffff;
+}
+
+select::after {
+  content: "▾";
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 16px;
+  color: #8e8e93;
+}
+
+select {
+  padding: 10px;
+}
+
+
+label+select {
+  margin-top: 0.7rem;
+  /* add space above select, effectively spacing label */
+}
+
+
+@media (max-width: 768px) {
+  .view {
+    padding: 0 1rem;
+  }
+
+  .btn {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .view {
+    padding: 0 1.5rem;
+  }
+
+  .btn {
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border);
+  border-top: 3px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+a,
+a:visited {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition-normal);
+}
+
+a:hover {
+  color: var(--primary-light);
+}
+
+
+.invisible {
+  opacity: 0;
+  pointer-events: none;
+
+}
+
+.none {
+  display: none;
+}
+
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: var(--background-primary);
+}
+
+tr {
+  border-bottom: 1px solid #e5e7eb;
+
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+}
+
+th {
+  background-color: #f9fafb;
+  font-weight: 600;
+}
+
+table img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
+
+
+@media (max-width: 768px) {
+
+  .desktop {
+    display: none;
+  }
+
+  table {
+    overflow-x: scroll;
+  }
+
+  table th,
+  table td {
+    font-size: 0.8rem;
+  }
+
+  table td {
+    padding: 0.5rem;
+  }
+
+  table .actions {
+    flex-direction: column;
+  }
+}
+
+.search-container {
+  margin-bottom: 1rem;
+}
+
+
+:global(.tooltip) {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
