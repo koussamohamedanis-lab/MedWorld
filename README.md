@@ -1,4 +1,14 @@
-<<<<<<< HEAD
+
+# BACKEND CRENENTIALS:
+SuperAdmin: 
+admin@medworld.com / admin123
+Doctor: 
+doctor@medworld.com / doctor123
+Patient: 
+patient@medworld.com / patient123
+
+- Note: The rest should be created by a user with high previleges.
+
 
 # Comment exécuter medowrld Svelte sur macOS
 
@@ -227,3 +237,4 @@ Ses fonctionnalités sont :
 - Consulter les antécédents médicaux, bilans, comptes rendus, prescriptions…;
 - Accéder aux factures;
 - Évaluer le médecin (note, commentaire…).
+
