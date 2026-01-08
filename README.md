@@ -1,242 +1,221 @@
+# 🏥 MedWorld
 
-# BACKEND CRENENTIALS:
-SuperAdmin: 
-admin@medworld.com / admin123
-Doctor: 
-doctor@medworld.com / doctor123
-Patient: 
-patient@medworld.com / patient123
+> A comprehensive telemedicine platform for managing medical cabinets, appointments, and patient consultations.
 
-- Note: The rest should be created by a user with high previleges.
+## 📋 Overview
 
+**MedWorld** is a full-stack web application designed to streamline healthcare operations. It enables seamless collaboration between patients, doctors, administrators, and support staff through an intuitive, role-based interface.
 
-# Comment exécuter medowrld Svelte sur macOS
+### Key Features
 
-Voici les étapes pour configurer et exécuter un projet **Svelte** sur macOS :
+- 👥 **Multi-role system** - SuperAdmin, Cabinet Admin, Doctors, Assistants, and Patients
+- 📅 **Appointment Management** - Easy scheduling, modification, and cancellation
+- 🏥 **Cabinet Management** - Complete medical cabinet organization
+- 📊 **Patient Records** - Comprehensive medical history and documentation
+- 💬 **Real-time Notifications** - Instant updates on appointment changes
+- ⭐ **Doctor Ratings** - Patient feedback and evaluation system
+- 🔐 **Secure Authentication** - JWT-based user authentication
 
 ---
 
-## 1. Installer Node.js
-Svelte nécessite **Node.js** et **npm** (le gestionnaire de paquets de Node).
+## 🏗️ Tech Stack
 
-### Vérifiez si Node.js est déjà installé :
+### Frontend
+- **Framework**: [Svelte](https://svelte.dev/) 5.39.5
+- **Build Tool**: [Vite](https://vitejs.dev/) 7.1.7
+- **Language**: TypeScript 5.9.2
+- **UI Components**: Flowbite Svelte, Lucide Icons
+
+### Backend
+- **Framework**: [Laravel](https://laravel.com/)
+- **Language**: PHP
+- **Database**: SQLite (configurable)
+- **Authentication**: JWT (Firebase)
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 16+ and npm/pnpm
+- PHP 8.2+
+- Composer
+- Git
+
+### Installation
+
+#### 1. Clone the repository
+
 ```bash
-node -v
-npm -v
-````
-
-si ce n'est pas le cas,, installez le avec **Homebrew** :
-
-```bash
-brew install node
+git clone https://github.com/koussamohamedanis-lab/MedWorld.git
+cd MedWorld
 ```
 
-Ou téléchargez-le directement depuis [nodejs.org](https://nodejs.org).
-
----
-
-## 2. Clonez la repo :
-
-```bash
-git clone https://github.com/esstsup/team12
-cd team12
-```
-
----
-
-## 3. Installer les deependances
-
-Installez les paquets nécessaires :
+#### 2. Frontend Setup
 
 ```bash
 npm install
+npm run dev
+```
+
+Frontend will be accessible at `http://localhost:5173`
+
+#### 3. Backend Setup
+
+```bash
+cd backend-php
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+npm run dev  # or php artisan serve
+```
+
+Backend API runs on `http://localhost:8000`
+
+---
+
+## 🔑 Default Credentials
+
+| Role | Email | Password |
+|------|-------|----------|
+| SuperAdmin | admin@medworld.com | admin123 |
+| Doctor | doctor@medworld.com | doctor123 |
+| Patient | patient@medworld.com | patient123 |
+
+**Note**: Additional users should be created by authenticated users with appropriate privileges.
+
+---
+
+## 📁 Project Structure
+
+```
+MedWorld/
+├── src/                    # Frontend (Svelte)
+│   ├── routes/            # Page routes
+│   ├── lib/               # Utilities, stores, components
+│   └── app.html           # Main HTML
+├── backend-php/           # Backend (Laravel)
+│   ├── app/               # Application logic
+│   ├── routes/            # API routes
+│   ├── database/          # Migrations & seeders
+│   └── config/            # Configuration files
+└── package.json           # Frontend dependencies
 ```
 
 ---
 
-## 4.  Lancer le serveur de développement
+## 🔧 Available Scripts
 
-Démarrez votre application Svelte :
-
+### Frontend
 ```bash
-🚀🚀🚀> npm run dev
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run preview  # Preview production build
+npm run check    # TypeScript & Svelte check
 ```
 
-Par défaut, elle sera accessible à l'adresse :
-
-```
-http://localhost:5173
-```
-
-Pour spécifier un autre port :
-
+### Backend
 ```bash
-npm run dev -- --port=3000
+php artisan serve           # Start development server
+php artisan migrate         # Run database migrations
+php artisan db:seed        # Seed database with sample data
+./vendor/bin/phpunit       # Run tests
 ```
 
 ---
 
-## 5. Construire le projet pour la production
+## 👥 User Roles & Features
 
-Pour générer une version prête à être déployée :
+### 1️⃣ SuperAdmin
+- Manage medical cabinets
+- Create/modify doctor administrators
+- Assign premium packages
+- Send global notifications
+- System-wide oversight
 
+### 2️⃣ Cabinet Admin (Doctor)
+- Manage cabinet staff and schedules
+- Create/archive doctors and assistants
+- Define booking policies
+- Handle premium packages
+- View cabinet analytics
+
+### 3️⃣ Doctor
+- Manage patient consultations
+- Record medical observations & prescriptions
+- Update availability
+- View patient history
+- Accept/modify appointments
+
+### 4️⃣ Assistant
+- Schedule appointments
+- Register patient attendance
+- Manage cabinet calendar
+- Handle patient registrations
+- Process payments
+
+### 5️⃣ Patient
+- Create account and book appointments
+- View medical history
+- Access prescriptions and records
+- Rate doctors
+- Manage appointments
+
+---
+
+## 🔒 Security
+
+- JWT authentication for API endpoints
+- Role-based access control (RBAC)
+- Encrypted password storage
+- CORS protection
+- Input validation & sanitization
+
+---
+
+## 📚 Documentation
+
+- [API Documentation](./backend-php/API_DOCUMENTATION.md)
+- [Backend Setup Guide](./backend-php/BACKEND_README.md)
+- [TOPSIS Implementation](./backend-php/TOPSIS_IMPLEMENTATION.md)
+
+---
+
+## 🐛 Testing
+
+### Backend Tests
 ```bash
-npm run build
-```
-
-Pour prévisualiser la version de production :
-
-```bash
-npm run preview
+cd backend-php
+php artisan test
 ```
 
 ---
 
-## 6. (Optionnel) Utiliser des extensions VS Code
+## 📝 License
 
-Pour une meilleure expérience de développement, installez :
-
-* **Svelte for VS Code**
-* **Prettier**
-* **ESLint**
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
 
-cest tout !
-le projet svelte est maintenant pret et fonctionne localement sur le macos
+## 👨‍💻 Team
 
+**Team 12** - ESST Project
 
+---
 
-# MedWorld - your way to the ESST.
+## 🤝 Contributing
 
-**MedWorld** est une application web qui permet la gestion de cabinets médicaux. Elle concerne cinq acteurs :
-le SuperAdmin, l'Admin, les médecins, l'assistant ainsi que le patient. L'objectif est de permettre une bonne organisation des activités du cabinet, en définissant les fonctionnalités de chacun des acteurs, et ce en assurant la cohérence et la fiabilité des informations disponibles sur l'application. Chaque entité aura accès à un dashboard avec des options spécifiques aux tâches qui lui sont attribuées.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-# Rôles & Fonctionnalités :
+---
 
-## 1/ Le SuperAdmin
-Il est le concepteur/développeur de l'application et est en charge de l'aspect organisationnel et technique.
-Ses fonctionnalités sont :
-- S'authentifier avec identifiant et mot de passe;
-- Créer/modifier/supprimer les cabinets;
-- Créer/modifier/supprimer les comptes des médecins Admin;
-- Associer chaque cabinet à son médecin Admin;
-- Affecter un cabinet à un pack premium particulier selon le choix de l'Admin;
-- Assigner un médecin à la place de l'Admin actuel dans le cas où celui en fonction ne l'est plus;
-- Envoyer des notifications globales.
+## 📞 Support
 
-## 2/ Le Médecin Admin
-Il est le médecin qui gère l'organisation globale du cabinet et est lui même praticien au sein de ce dernier.
-Ses fonctionnalités sont :
-- S'authentifier avec identifiant et mot de passe;
-- Créer/modifier/archiver les comptes des médecins du cabinet;
-- Créer/modifier/archiver les comptes assistants;
-- Modifier les informations générales du cabinet (nom, adresse, téléphone, liste des médecins…);
-- Gestion des horaires d'ouverture, durée approximative des consultations, des congés, des fermetures…;
-=======
-# MediTrack - your way to the ESST.
+For issues and questions, please open an issue on GitHub.
 
-**MediTrack** est une application web qui permet la gestion de cabinets médicaux. Elle concerne cinq acteurs : 
-le SuperAdmin, l’Admin, les médecins, l’assistant ainsi que le patient. L’objectif est de permettre une bonne organisation des activités du cabinet, en définissant les fonctionnalités de chacun des acteurs, et ce en assurant la cohérence et la fiabilité des informations disponibles sur l’application. Chaque entité aura accès à un dashboard avec des options spécifiques aux tâches qui lui sont attribuées.
+---
 
-# Rôles & Fonctionnalités : 
-
-## 1/ Le SuperAdmin
-Il est le concepteur/développeur de l’application et est en charge de l’aspect organisationnel et technique.
-Ses fonctionnalités sont :
-- S’authentifier avec identifiant et mot de passe;
-- Créer/modifier/supprimer les cabinets;
-- Créer/modifier/supprimer les comptes des médecins Admin; 
-- Associer chaque cabinet à son médecin Admin;
-- Affecter un cabinet à un pack premium particulier selon le choix de l’Admin;
-- Assigner un médecin à la place de l’Admin actuel dans le cas où celui en fonction ne l’est plus;
-- Envoyer des notifications globales.
-
-## 2/ Le Médecin Admin
-Il est le médecin qui gère l’organisation globale du cabinet et est lui même praticien au sein de ce dernier.
-Ses fonctionnalités sont :
-- S’authentifier avec identifiant et mot de passe;
-- Créer/modifier/archiver les comptes des médecins du cabinet;
-- Créer/modifier/archiver les comptes assistants;
-- Modifier les informations générales du cabinet (nom, adresse, téléphone, liste des médecins…);
-- Gestion des horaires d’ouverture, durée approximative des consultations, des congés, des fermetures…;
->>>>>>> 6f14743 (Initial Commit)
-- Consulter les informations administratives des patients;
-- Définir la politique de réservation;
-- Consulter le planning global du cabinet (de tous les médecins);
-- Sélectionner un pack premium pour le cabinet.
-
-## 3/ Le Médecin
-Il assure le suivi médical des patients.
-Ses fonctionnalités sont :
-<<<<<<< HEAD
-- S'authentifier avec identifiant et mot de passe;
-- Créer/modifier (observations/prescriptions complémentaires) une consultation pour un patient;
-- Consulter l'historique des consultations effectuées;
-- Consulter son agenda, mettre à jour ses disponibilités…;
-- Recevoir les notifications des rendez-vous modifiés/annulés du patient par l'assistant;
-- Rechercher le patient dans la base du cabinet;
-- Créer/consulter la fiche patient (informations administratives et dossier médical);
-- Accéder à l'historique complet du patient (consultations, prescriptions, examens…);
-=======
-- S’authentifier avec identifiant et mot de passe;
-- Créer/modifier (observations/prescriptions complémentaires) une consultation pour un patient;
-- Consulter l’historique des consultations effectuées;
-- Consulter son agenda, mettre à jour ses disponibilités…;
-- Recevoir les notifications des rendez-vous modifiés/annulés du patient par l’assistant;
-- Rechercher le patient dans la base du cabinet;
-- Créer/consulter la fiche patient (informations administratives et dossier médical);
-- Accéder à l’historique complet du patient (consultations, prescriptions, examens…);
->>>>>>> 6f14743 (Initial Commit)
-- Mettre à jour les informations médicales (antécédents, traitements…);
-- Orienter le patient à un confrère au sein du cabinet;
-- Modifier son profil (spécialité, contact…);
-- Gérer son mot de passe;
-- Définir ses honoraires.
-
-<<<<<<< HEAD
-## 4/ L'Assistant
-Il assure la gestion administrative et logistique du cabinet afin de faciliter le travail des médecins et la gestion des patients.
-
-Ses fonctionnalités sont :
-- S'authentifier avec identifiant et mot de passe;
-- Planifier un rendez-vous pour un patient avec un médecin du cabinet (choix du médecin, date, heure…);
-- Modifier/annuler un rendez-vous existant;
-- Enregistrer la présence/absence du patient le jour du rendez-vous;
-- Afficher l'agenda global/programme du jour du cabinet ou celui d'un médecin spécifique;
-- Ajouter un patient/mettre à jour en insérant ses informations administratives;                                                                                                - Encaisser le patient en attribuant la somme au médecin ayant effectué la consultation.
-
-## 5/ Le Patient
-Il est l'utilisateur qui fait appel aux services proposés par le cabinet.
-Ses fonctionnalités sont :
-- Créer/modifier le compte patient;
-- S'authentifier avec identifiant et mot de passe;
-- Modifier les informations personnelles;
-- Prendre/modifier/annuler un rendez-vous avec un médecin d'un cabinet spécifique;
-=======
-## 4/ L’Assistant
-Il assure la gestion administrative et logistique du cabinet afin de faciliter le travail des médecins et la gestion des patients.
-
-Ses fonctionnalités sont :
-- S’authentifier avec identifiant et mot de passe;
-- Planifier un rendez-vous pour un patient avec un médecin du cabinet (choix du médecin, date, heure…);
-- Modifier/annuler un rendez-vous existant;
-- Enregistrer la présence/absence du patient le jour du rendez-vous;
-- Afficher l’agenda global/programme du jour du cabinet ou celui d’un médecin spécifique;
-- Ajouter un patient/mettre à jour en insérant ses informations administratives;                                                                                                - Encaisser le patient en attribuant la somme au médecin ayant effectué la consultation.
-
-## 5/ Le Patient
-Il est l’utilisateur qui fait appel aux services proposés par le cabinet.
-Ses fonctionnalités sont :
-- Créer/modifier le compte patient;
-- S’authentifier avec identifiant et mot de passe;
-- Modifier les informations personnelles;
-- Prendre/modifier/annuler un rendez-vous avec un médecin d’un cabinet spécifique;
->>>>>>> 6f14743 (Initial Commit)
-- Consulter les consultations passées et à venir;
-- Consulter les antécédents médicaux, bilans, comptes rendus, prescriptions…;
-- Accéder aux factures;
-- Évaluer le médecin (note, commentaire…).
-
-#   M e d W o r l d  
- 
+<div align="center">
+  <strong>Built with ❤️ for better healthcare management</strong>
+</div>
