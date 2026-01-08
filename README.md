@@ -238,3 +238,5 @@ Ses fonctionnalités sont :
 - Accéder aux factures;
 - Évaluer le médecin (note, commentaire…).
 
+#   M e d W o r l d  
+ 
